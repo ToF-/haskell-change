@@ -23,5 +23,13 @@ spec = do
     describe "for several pieces" $ do
       it "of non multiples" $ do
         change 10 [7,3] `shouldBe` 1 
+        change 7  [7,3] `shouldBe` 1
+      it "with incompatible amount" $ do
+        change 8  [7,3] `shouldBe` 0
 
-
+      it "with several solutions" $ do
+        change 10 [5,2] `shouldBe` 2
+        change 12 [5,2] `shouldBe` 2
+        change 11 [5,1] `shouldBe` 3
+        let result = fromIntegral $ length [[5,5],[5,2,2,1],[5,2,1,1,1],[5,1,1,1,1,1],[2,2,2,2,2],[2,2,2,2,1,1],[2,2,2,1,1,1,1],[2,2,1,1,1,1,1,1],[2,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1]]
+        change 10 [5,2,1] `shouldBe` result
