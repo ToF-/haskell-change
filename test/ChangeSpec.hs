@@ -33,3 +33,9 @@ spec = do
         change 11 [5,1] `shouldBe` 3
         let result = fromIntegral $ length [[5,5],[5,2,2,1],[5,2,1,1,1],[5,1,1,1,1,1],[2,2,2,2,2],[2,2,2,2,1,1],[2,2,2,1,1,1,1],[2,2,1,1,1,1,1,1],[2,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1]]
         change 10 [5,2,1] `shouldBe` result
+
+      it "in any order of coin value" $ do
+        change 10 [1,2,5] `shouldBe` 10
+        change 10 [3,7] `shouldBe` 1
+        change 300 [5,10,20,50,500,200,100] `shouldBe` 1022
+
